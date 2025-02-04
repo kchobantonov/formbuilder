@@ -202,11 +202,11 @@ export class ToolFinder implements ToolFinderInterface {
 
             const hasSchema = _.isObject(tool.schema);
             const hasUischema = _.isObject(tool.uischema);
-            const hasUischemaType = hasUischema && tool.uischema.type;
+            const hasUischemaType = hasUischema && tool.uischema?.type;
             const hasElements = hasUischemaType && 'elements' in tool.uischema;
             const isScoped = hasUischemaType && 'scope' in tool.uischema;
-            const isAutoLayout = isScoped && tool.uischema.scope === '#'; //:TODO are there other scopes?
-            const isLabel = tool.uischema.type === 'Label';
+            const isAutoLayout = isScoped && tool.uischema?.scope === '#'; //:TODO are there other scopes?
+            const isLabel = hasUischemaType && tool.uischema?.type === 'Label';
 
             const isLayout = !hasSchema || (hasElements) || isLabel || isAutoLayout;
 
